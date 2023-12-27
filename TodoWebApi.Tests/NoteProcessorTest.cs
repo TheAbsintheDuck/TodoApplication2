@@ -80,5 +80,39 @@ namespace TodoWebApi.Tests
 			//ASSERT
 			Assert.Empty(getNotes);
 		}
+
+		[Fact]
+		public void Should_Delete_Note()
+		{
+			//ARRANGE
+			var post1 = new Note
+			{
+				Text = "Shop",
+				IsDone = false
+			};
+
+			var post2 = new Note
+			{
+				Text = "Study",
+				IsDone = false
+			};
+
+			var post3 = new Note
+			{
+				Text = "Clean house",
+				IsDone = false
+			};
+
+			//ACT
+			_processor.Post(post1);
+			_processor.Post(post2);
+			_processor.Post(post3);
+			_processor.Delete(post2.Id);
+
+			List<Note> getNotesAfterDelete = _processor.GetAllNotes();
+
+			//ASSERT
+			Assert.DoesNotContain(post2, getNotesAfterDelete);
+		}
 	}
 }

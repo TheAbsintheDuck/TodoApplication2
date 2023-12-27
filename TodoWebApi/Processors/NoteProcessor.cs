@@ -16,6 +16,17 @@ namespace TodoWebApi.Processors
 		public static List<Note> notes = new List<Note>();
 		public static int counter = 1;
 
+		[HttpDelete("{id:int}")]
+		public void Delete(int id)
+		{
+			var note = notes.FirstOrDefault(n => n.Id == id);
+
+			if (note != null)
+			{
+				notes.Remove(note);
+			}
+		}
+
 		[HttpGet]
 		public List<Note> GetAllNotes()
 		{
