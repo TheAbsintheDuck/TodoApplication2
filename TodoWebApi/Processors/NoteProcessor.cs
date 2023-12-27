@@ -1,22 +1,28 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoWebApi.Models;
 
-namespace TodoWebApi.Tests
+namespace TodoWebApi.Processors
 {
-	internal class NoteProcessor
+	[ApiController]
+	[Route("/notes")]
+	public class NoteProcessor
 	{
-		private List<Note> notes = new List<Note>();
-		private int counter = 1;
+		public static List<Note> notes = new List<Note>();
+		public static int counter = 1;
 
+		[HttpGet]
 		public List<Note> GetAllNotes()
 		{
 			return notes;
 		}
 
+		[HttpPost]
 		public void Post(Note post)
 		{
 			if (post == null)

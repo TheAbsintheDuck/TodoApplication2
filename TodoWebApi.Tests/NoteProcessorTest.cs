@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoWebApi.Models;
+using TodoWebApi.Processors;
 
 namespace TodoWebApi.Tests
 {
@@ -12,6 +14,7 @@ namespace TodoWebApi.Tests
 		public NoteProcessorTest()
 		{
 			_processor = new NoteProcessor();
+			NoteProcessor.notes.Clear();
 		}
 
 		[Fact]
