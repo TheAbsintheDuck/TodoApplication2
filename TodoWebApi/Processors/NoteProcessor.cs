@@ -16,6 +16,27 @@ namespace TodoWebApi.Processors
 		public static List<Note> notes = new List<Note>();
 		public static int counter = 1;
 
+		[HttpPut("{id:int}")]
+		public void Check(Note post)
+		{
+			var checkbox = notes.FirstOrDefault(n => n.Id == post.Id);
+
+			if (checkbox != null)
+			{
+				checkbox.IsDone = post.IsDone;
+
+				if (checkbox.IsDone == false)
+				{
+					post.IsDone = true;
+				}
+
+				else
+				{
+					post.IsDone = false;
+				}
+			}
+		}
+
 		[HttpDelete("{id:int}")]
 		public void Delete(int id)
 		{

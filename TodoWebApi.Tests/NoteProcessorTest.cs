@@ -114,5 +114,26 @@ namespace TodoWebApi.Tests
 			//ASSERT
 			Assert.DoesNotContain(post2, getNotesAfterDelete);
 		}
+
+		[Fact]
+		public void Should_Mark_Note_As_Done()
+		{
+			//ARRANGE
+			var post = new Note
+			{
+				Text = "Shop",
+				IsDone = false
+			};
+
+			//ACT
+			_processor.Post(post);
+			_processor.Check(post);
+
+			var getNote = _processor.GetAllNotes().FirstOrDefault(n => n.Id == post.Id);
+
+			//ASSERT
+			Assert.NotNull(getNote);
+			Assert.True(getNote.IsDone);
+		}
 	}
 }
