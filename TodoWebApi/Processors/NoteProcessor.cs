@@ -37,6 +37,13 @@ namespace TodoWebApi.Processors
 			}
 		}
 
+		[HttpGet("/remaining")]
+		public string CountNotes()
+		{
+			var remaining = notes.Count(n => !n.IsDone);
+			return remaining.ToString();
+		}
+
 		[HttpDelete("{id:int}")]
 		public void Delete(int id)
 		{
