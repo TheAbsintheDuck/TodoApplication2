@@ -135,5 +135,32 @@ namespace TodoWebApi.Tests
 			Assert.NotNull(getNote);
 			Assert.True(getNote.IsDone);
 		}
+
+		[Fact]
+		public void Should_Show_Remaining_Notes()
+		{
+			//ARRANGE
+			var post1 = new Note
+			{
+				Text = "Shop",
+				IsDone = false
+			};
+
+			var post2 = new Note
+			{
+				Text = "Study",
+				IsDone = false
+			};
+
+			//ACT
+			_processor.Post(post1);
+			_processor.Post(post2);
+
+			var remaining = _processor.CountNotes();
+
+			//ASSERT
+			Assert.NotNull(remaining);
+			Assert.Equal("2", remaining);
+		}
 	}
 }
