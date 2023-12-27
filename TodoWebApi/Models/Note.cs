@@ -1,6 +1,6 @@
-﻿namespace TodoWebApi.Tests
+﻿namespace TodoWebApi.Models
 {
-	internal class Note
+	public class Note
 	{
 		public int Id { get; set; }
 		public string Text { get; set; }
