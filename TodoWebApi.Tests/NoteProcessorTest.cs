@@ -10,13 +10,17 @@ namespace TodoWebApi.Tests
 {
 	public class NoteProcessorTest
 	{
+		//An instance of NoteProcessor for executing tests.
 		private NoteProcessor _processor;
+
+		//A constructor that creates a new instance of NoteProcessor and clears the list with notes for every test.
 		public NoteProcessorTest()
 		{
 			_processor = new NoteProcessor();
 			NoteProcessor.notes.Clear();
 		}
 
+		//Test to ensure that a note is added to the list
 		[Fact]
 		public void Should_Post_One_Note()
 		{
@@ -37,6 +41,7 @@ namespace TodoWebApi.Tests
 			Assert.Single(postNote);
 		}
 
+		//Test to ensure that a list with notes is retrieved.
 		[Fact]
 		public void Should_Get_List_Of_Notes()
 		{
@@ -71,6 +76,7 @@ namespace TodoWebApi.Tests
 			Assert.Equal(3, getNotes.Count);
 		}
 
+		//Test to ensure that an empty list is retrieved.
 		[Fact]
 		public void Should_Get_Empty_List()
 		{
@@ -81,6 +87,7 @@ namespace TodoWebApi.Tests
 			Assert.Empty(getNotes);
 		}
 
+		//Test to ensure that a note can be deleted from the list.
 		[Fact]
 		public void Should_Delete_Note()
 		{
@@ -115,6 +122,7 @@ namespace TodoWebApi.Tests
 			Assert.DoesNotContain(post2, getNotesAfterDelete);
 		}
 
+		//Test to ensure that a note can be marked as done.
 		[Fact]
 		public void Should_Mark_Note_As_Done()
 		{
@@ -136,6 +144,7 @@ namespace TodoWebApi.Tests
 			Assert.True(getNote.IsDone);
 		}
 
+		//Test to ensure that the number of remaining notes is counted.
 		[Fact]
 		public void Should_Show_Remaining_Notes()
 		{
