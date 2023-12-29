@@ -10,11 +10,11 @@ Följ dessa steg för att sätta upp utvecklingsmiljön och köra TodoApplicatio
 
 3. Tryck på F5 eller använd menyn för att starta applikationen.
 
-4. Backend-servern kommer att starta på `https://localhost:7072` och en webbläsare öppnas automatiskt.
+4. Backend-servern kommer att starta på `https://localhost:7072/index.html` och en webbläsare öppnas automatiskt.
 
 ## Användning av applikationen
 
-1. Besök `https://localhost:7072` i din webbläsare.
+1. Besök `https://localhost:7072/index.html` i din webbläsare.
 
 2. På startsidan kan du lägga till, ta bort och markera anteckningar.
 
